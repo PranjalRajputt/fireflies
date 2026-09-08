@@ -1,5 +1,5 @@
 'use client';
-
+import { API_BASE_URL } from '@/lib/config';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ArrowLeft, Share2, Download, Trash2, Edit2, Check, X, FileText, Sparkles, CheckSquare } from 'lucide-react';
@@ -33,7 +33,7 @@ export default function MeetingDetail() {
 
     async function fetchMeeting() {
       try {
-        const res = await fetch(`http://localhost:8000/api/meetings/${meetingId}`);
+        const res = await fetch(`${API_BASE_URL}/api/meetings/${meetingId}`);
         if (!res.ok) throw new Error('Meeting not found');
         const data = await res.json();
         if (isMounted && !isDeleting) {
@@ -102,7 +102,7 @@ export default function MeetingDetail() {
 
   const handleDownload = () => {
     try {
-      window.open(`http://localhost:8000/api/meetings/${meetingId}/export?format=pdf`, '_blank');
+      window.open(`${API_BASE_URL}/api/meetings/${meetingId}/export?format=pdf`, '_blank');
       addToast('Downloading meeting PDF...', 'success');
     } catch (error) {
       addToast('Failed to download meeting report', 'error');

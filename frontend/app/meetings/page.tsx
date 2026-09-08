@@ -1,5 +1,5 @@
 'use client';
-
+import { API_BASE_URL } from '@/lib/config';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, Video, Calendar, Clock, Plus } from 'lucide-react';
@@ -13,7 +13,7 @@ export default function MeetingsPage() {
   useEffect(() => {
     async function fetchMeetings() {
       try {
-        const res = await fetch(`http://localhost:8000/api/meetings`);
+        const res = await fetch(`${API_BASE_URL}/api/meetings`);
         const data = await res.json();
         setMeetings(data);
       } catch (error) {

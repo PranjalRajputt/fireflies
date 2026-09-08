@@ -1,5 +1,7 @@
 // lib/api.ts
-const API_BASE_URL = 'http://localhost:8000/api';
+import { API_BASE_URL as BASE_URL } from '@/lib/config';
+
+const API_BASE_URL = `${BASE_URL}/api`;
 
 export async function fetchMeetings() {
   const res = await fetch(`${API_BASE_URL}/meetings`);

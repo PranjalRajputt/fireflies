@@ -1,5 +1,5 @@
 'use client';
-
+import { API_BASE_URL } from '@/lib/config';
 import { useState, useRef, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { 
@@ -64,7 +64,7 @@ export default function Header() {
       }
 
       try {
-        const res = await fetch(`http://localhost:8000/api/meetings?search=${encodeURIComponent(searchQuery)}`);
+        const res = await fetch(`${API_BASE_URL}/api/meetings?search=${encodeURIComponent(searchQuery)}`);
         if (res.ok) {
           const data = await res.json();
           setSearchResults(Array.isArray(data) ? data : data.meetings || []);
