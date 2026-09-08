@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+body {
+  background-color: #fbfbfa;
+  color: #111827;
+}
+
+/* Bulletproof fix to hide the Next.js 'N' development indicator */
+nextjs-portal, 
+[data-nextjs-toast] {
+  display: none !important;
+}
