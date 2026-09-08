@@ -36,13 +36,13 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 models.Base.metadata.create_all(bind=engine)
 
-# Add prefix="/api" so routes match /api/meetings, /api/transcripts, etc.
-app.include_router(meetings.router, prefix="/api")
-app.include_router(transcripts.router, prefix="/api")
-app.include_router(action_items.router, prefix="/api")
-app.include_router(topics.router, prefix="/api")
-app.include_router(search.router, prefix="/api")
-app.include_router(export.router, prefix="/api")
+# Include routers without duplicate prefixes
+app.include_router(meetings.router)
+app.include_router(transcripts.router)
+app.include_router(action_items.router)
+app.include_router(topics.router)
+app.include_router(search.router)
+app.include_router(export.router)
 
 
 @app.get("/")
