@@ -24,9 +24,6 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# The frontend (Next.js dev server) runs on a different origin, so CORS
-# needs to be wide open for local development. Tighten allow_origins to
-# your deployed frontend URL in production.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -45,6 +42,11 @@ app.include_router(action_items.router)
 app.include_router(topics.router)
 app.include_router(search.router)
 app.include_router(export.router)
+
+
+@app.get("/")
+def read_root():
+    return {"message": "Fireflies API is running!"}
 
 
 @app.get("/api/health")
