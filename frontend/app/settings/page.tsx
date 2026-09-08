@@ -136,7 +136,7 @@ export default function SettingsPage() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`w-full flex items-center px-3 py-2.5 rounded-lg transition text-sm ${isActive ? 'bg-purple-50 text-purple-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
                 >
-                  {!tab.noIcon && <Icon className={`w-4 h-4 mr-3 ${isActive ? 'text-purple-600' : 'text-gray-400'}`} />}
+                  {!tab.icon && <Icon className={`w-4 h-4 mr-3 ${isActive ? 'text-purple-600' : 'text-gray-400'}`} />}
                   {tab.label}
                 </button>
               )
